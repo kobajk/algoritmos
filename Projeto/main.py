@@ -1,12 +1,8 @@
 import math as m
-import matplotlib.pyplot as plt
 
 def dil(a,L,T):
   d = a * L * T
   return d
-matm = 0
-matp = 0
-
 
 print('---------------------------------------------------------------------------------------'
       '\n Bem-vindo ao programa especializado em TERMODINÂMICA: DILATAÇÃO TÉRMICA DE CORPOS')
@@ -39,92 +35,63 @@ if met == 1:
 
   if tmat == 1:
     print(' Você escolheu a classe dos metais! ')
-    print(' Qual plástico o objeto é feito? '
-          '\n (1) Alumínio'
-          '\n (2) Cobre'
-          '\n (3) Ouro'
-          '\n (4) Prata'
-          '\n (5) Titânio'
-          '\n (6) Outro')
-    matp = int(input( ))
-    while matp < 1 or matp > 6:
-      print(' Opção inválida: Escolha uma das alternativas do menu.')
-      print(' Qual plástico o objeto é feito? '
-            '\n (1) Alumínio'
-            '\n (2) Cobre'
-            '\n (3) Ouro'
-            '\n (4) Prata'
-            '\n (5) Titânio'
-            '\n (6) Outro')
-      matp = int(input( ))
-
-    if matp == 1:
-      a = 23.6 * 10**-6
-    elif matp == 2:
-      a = 17.6 * 10**-6
-    elif matp == 3:
-      a = 14.2 * 10**-6
-    elif matp == 4:
-      a = 19.8 * 10**-6
-    elif matp == 5:
-      a = 8.64 * 10**-6
-    else:
-      a = float(input(' Qual o coeficiente de dilatação térmica linear do material utlizado? (°C))'))
-      while a <= 0:
-        print(' Valor inválido: Menor ou igual a zero!')
-        a = float(input(' Qual o coeficiente de dilatação térmica linear do material utlizado? (°C))'))
-      tesp = float(input(' Qual a temperatura máxima que o material especificado se mantém sólido? (°C))'))
-      while tesp <= 0:
-        print(' Valor inválido: Menor ou igual a zero!')
-        tesp = float(input(' Qual a temperatura máxima que o material especificado se mantém sólido? (°C))'))
+    matm = ['Alumínio', 'Cobre', 'Ouro', 'Prata', 'Titânio', 'Outro']
+    am = [(23.6 * 10**-6), (17.6 * 10**-6), (14.2 * 10**-6), (19.8 * 10**-6), (8.64 * 10**-6)]
+    tempmaxm = [660, 1084, 1064, 961.78, 1668]
+    print(' Escreva o material que deseja utlizar, da lista: ', matm)
+    x = str(input(''))
+    while x not in matm:
+        print(' O material digitado não está na lista!')
+        print(matm)
+        x = str(input(' Escreva o material que deseja utlizar, da lista: '))
+    if x == 'Outro':
+        nome = str(input('Qual o nome do material? '))
+        matm[5] = nome
+        print(matm)
+        amesp = float(input(' Qual o coeficiente de dilatação térmica linear do material utlizado? (°C): '))
+        while amesp <= 0:
+            print(' Valor inválido: Menor ou igual a zero!')
+            amesp = float(input(' Qual o coeficiente de dilatação térmica linear do material utlizado? (°C): '))
+        am.append(amesp)
+        tesp = float(input(' Qual a temperatura máxima que o material especificado se mantém sólido? (°C): '))
+        tempmaxm.append(tesp)
+        x = nome
+    x = matm.index(x)
+    a = am[x]
 
   elif tmat == 2:
     print(' Você escolheu a classe dos plásticos! ')
-    print(' Qual plástico o objeto é feito? '
-          '\n (1) ABS'
-          '\n (2) PP'
-          '\n (3) PA'
-          '\n (4) PS'
-          '\n (5) PC'
-          '\n (6) Outro')
-    matm = int(input( ))
-    while matm < 1 or matm > 6:
-      print(' Opção inválida: Escolha uma das alternativas do menu.')
-      print(' Qual plástico o objeto é feito? '
-            '\n (1) ABS'
-            '\n (2) PP'
-            '\n (3) PA'
-            '\n (4) PS'
-            '\n (5) PC'
-            '\n (6) Outro')
-      matm = int(input( ))
-    if matm == 1:
-      a = 90 * 10**-6
-    elif matm == 2:
-      a = 140 * 10**-6
-    elif matm == 3:
-      a = 110 * 10**-6
-    elif matm == 4:
-      a = 65 * 10**-6
-    elif matm == 5:
-      a = 67.5 * 10**-6
-    else:
-      a = float(input(' Qual o coeficiente de dilatação térmica linear do material utlizado? (°C))'))
-      while a <= 0:
-        print(' Valor inválido: Menor ou igual a zero!')
-        a = float(input(' Qual o coeficiente de dilatação térmica linear do material utlizado? (°C))'))
-      tesp = float(input(' Qual a temperatura máxima que o material especificado se mantém sólido? (°C))'))
-      while tesp <= 0:
-        print(' Valor inválido: Menor ou igual a zero!')
-        tesp = float(input(' Qual a temperatura máxima que o material especificado se mantém sólido? (°C))'))
+    matp = ['ABS', 'PP', 'PA', 'PS', 'PC', 'Outro']
+    ap = [(90 * 10**-6), (140 * 10**-6), (110 * 10**-6), (65 * 10**-6), (67.5 * 10**-6)]
+    tempmaxp = [100, 160, 160, 100, 150]
+    print(' Escreva o material que deseja utlizar, da lista: ', matp)
+    x = str(input(''))
+    while x not in matp:
+        print(' O material digitado não está na lista!')
+        print(matp)
+        x = str(input(' Escreva o material que deseja utlizar, da lista: '))
+    if x == 'Outro':
+        nome = str(input('Qual o nome do material? '))
+        matp[5] = nome
+        print(matp)
+        apesp = float(input(' Qual o coeficiente de dilatação térmica linear do material utlizado? (°C): '))
+        while apesp <= 0:
+            print(' Valor inválido: Menor ou igual a zero!')
+            apesp = float(input(' Qual o coeficiente de dilatação térmica linear do material utlizado? (°C): '))
+        ap.append(apesp)
+        tesp = float(input(' Qual a temperatura máxima que o material especificado se mantém sólido? (°C): '))
+        tempmaxp.append(tesp)
+        x = nome
+    x = matp.index(x)
+    a = ap[x]
 
 
   else:
     print(' Você escolheu a classe dos materiais personalizados! ')
-    a = float(input(' Qual o coeficiente de dilatação térmica linear do material utlizado? (°C))'))
-    while a <= 0:
+    aesp = float(input(' Qual o coeficiente de dilatação térmica linear do material utlizado? (°C): '))
+    while aesp <= 0:
         print(' Valor inválido: Menor ou igual a zero!')
-        a = float(input(' Qual o coeficiente de dilatação térmica linear do material utlizado? (°C))'))
+        aesp = float(input(' Qual o coeficiente de dilatação térmica linear do material utlizado? (°C): '))
 
   print('\n Material do objeto definido com sucesso! ')
 
@@ -140,41 +107,30 @@ if met == 1:
     format = int(input())
 
   if format == 1:
-    print('\n Quais são as dimensões desse polígono? Em metros: ')
-    # desenho do polígono
-    fig, ax = plt.subplots()
-    ax.plot([1, 2, 2, 1, 1], [1, 1, 2, 2, 1])
-    plt.xticks([])
-    plt.yticks([])
-    plt.xlabel('Comprimento (x)')
-    plt.ylabel('Largura (y)')
-
-    plt.show()
-
+    print('\n Quais são as dimensões desse polígono? Em metros! \n')
+    print('                   X                      Z  ')
+    print('    *****************************       *****')
+    print('    *                           *       *   *')
+    print('    *                           *       *   *')
+    print(' Y  *                           *       *   *')
+    print('    *                           *       *   *')
+    print('    *                           *       *   *')
+    print('    *****************************       *****')
     compx = float(input('\n Qual o comprimento(x) do polígono? Em metros: '))
     largy = float(input('\n Qual a largura(y) do polígono? Em metros: '))
     altz = float(input('\n Qual a altura/espessura (z) do polígono? Em metros: '))
 
-    diam = 1
 
   else:
-    print('\n Quais são as dimensões desse cilindro? Em metros: ')
-    # desenho do cilindro
-    circle1 = plt.Circle((0.5, 0.5), 0.2, fill = False)
-    circle2 = plt.Circle((0.5, 1.5), 0.2, fill = False)
-    fig, ax = plt.subplots()
-    ax.add_artist(circle1)
-    ax.add_artist(circle2)
-    plt.plot([0.3, 0.3], [0.5, 1.5], 'k-')
-    plt.plot([0.7, 0.7], [0.5, 1.5], 'k-')
-    plt.xlim(0, 1)
-    plt.ylim(0, 2)
-    plt.xticks([])
-    plt.yticks([])
-    plt.xlabel('Diâmetro (Ø)')
-    plt.ylabel('Altura (z)')
-
-    plt.show()
+    print('\n Quais são as dimensões desse cilindro? Em metros! \n')
+    print('       Ø   ')
+    print('    *******')
+    print('    *     *')
+    print('    *     *')
+    print(' Z  *     *')
+    print('    *     *')
+    print('    *     *')
+    print('    *******')
 
     diam = float(input('\n Qual o diâmetro do cilindro? Em metros: '))
     altz = float(input('\n Qual a altura(z) do cilindro? Em metros: '))
@@ -183,32 +139,43 @@ if met == 1:
 
   print('\n Agora é a ultima etapa! O range de temperatura que o objeto será exposto. ')
 
+
   t1 = float(input('\n Qual a temperatura inicial que o objeto será exposto? °C: '))
-  while (matp == 1 and t1 >= 100) or (matp == 2 and t1 >= 160) or (matp == 3 and t1 >= 160) or (matp == 4 and t1 >= 100) or (matp == 5 and t1 >= 150) or ((matp == 6 or matm == 6) and t1 >= tesp) or (matm == 1 and t1 >= 660) or (matm == 2 and t1 >= 1084) or (matm == 3 and t1 >= 1064) or (matm == 4 and t1 >= 961.78) or (matm == 5 and t1 >= 1668):
-    print(' Temperatura inválida para o material especificado! A temperatura deve manter o material sólido')
-    t1 = float(input('\n Qual a temperatura inicial que o objeto será exposto? °C: '))
+  if tmat == 1:
+    while t1 >= tempmaxm[x]:
+      print(f' Temperatura inválida! A temperatura deve manter o material sólido, para {matm[x]} a temperatura máxima é {tempmaxm[x]}°C')
+      t1 = float(input('\n Qual a temperatura inicial que o objeto será exposto? °C: '))
+  elif tmat == 2:
+    while t1 >= tempmaxp[x]:
+      print(f' Temperatura inválida! A temperatura deve manter o material sólido, para {matp[x]} a temperatura máxima é {tempmaxp[x]}°C')
+      t1 = float(input('\n Qual a temperatura inicial que o objeto será exposto? °C: '))
+
+
 
   t2 = float(input(' Qual a temperatura final que o objeto será exposto? °C: '))
-  while (matp == 1 and t2 >= 100) or (matp == 2 and t2 >= 160) or (matp == 3 and t2 >= 160) or (matp == 4 and t2 >= 100) or (matp == 5 and t2 >= 150) or ((matp == 6 or matm == 6) and t2 >= tesp) or (matm == 1 and t2 >= 660) or (matm == 2 and t2 >= 1084) or (matm == 3 and t2 >= 1064) or (matm == 4 and t2 >= 961.78) or (matm == 5 and t2 >= 1668):
-    print(' Temperatura inválida para o material especificado! A temperatura deve manter o material sólido')
-    t2 = float(input(' Qual a temperatura final que o objeto será exposto? °C: '))
-
-  dildiam = dil(a,t2-t1,diam)
-  dilalt = dil(a,t2-t1,altz)
-  dilcomp = dil(a,t2-t1,compx)
-  dillarg = dil(a,t2-t1,largy)
+  if tmat == 1:
+    while t2 >= tempmaxm[x]:
+      print(f' Temperatura inválida! A temperatura deve manter o material sólido, para {matm[x]} a temperatura máxima é {tempmaxm[x]}°C.')
+      t2 = float(input('\n Qual a temperatura inicial que o objeto será exposto? °C: '))
+  elif tmat == 2:
+    while t2 >= tempmaxp[x]:
+      print(f' Temperatura inválida! A temperatura deve manter o material sólido, para {matp[x]} a temperatura máxima é {tempmaxp[x]}°C.')
+      t2 = float(input('\n Qual a temperatura inicial que o objeto será exposto? °C: '))
 
   if format == 1:
+    dilalt = dil(a,t2-t1,altz)
+    dilcomp = dil(a,t2-t1,compx)
+    dillarg = dil(a,t2-t1,largy)
     print('\n\n\n A dilatação do seu objeto será: '
           '\n No eixo X: %.4f m (comprimento final de %.4f m)'
           '\n No eixo Y: %.4f m (comprimento final de %.4f m)'
           '\n No eixo Z: %.4f m (comprimento final de %.4f m)' %(dilcomp , dilcomp+compx, dillarg , dillarg+largy, dilalt , dilalt+altz))
   else:
+    dilalt = dil(a,t2-t1,altz)
+    dildiam = dil(a,t2-t1,diam)
     print('\n\n\n A dilatação do seu objeto será: '
           '\n No diâmetro: %.4f m (comprimento final de %.4f m)'
           '\n No eixo Z: %.4f m (comprimento final de %.4f m)' %(dildiam , dildiam+diam, dilalt , dilalt+altz))
 
 else:
   print(' Você escolheu a opção de definir o material a partir de uma temperatura!')
-
-
